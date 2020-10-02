@@ -1,0 +1,8 @@
+{
+  "name": "robot-instagram-web-scrapping",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/joaoeliandro/robot-instagram-web-scrapping.git",
+  "author": "João Eliandro <eliandrogermano@gmail.com>",
+  "license": "MIT"
+}
