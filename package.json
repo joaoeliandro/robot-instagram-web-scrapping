@@ -4,5 +4,8 @@
   "main": "index.js",
   "repository": "https://github.com/joaoeliandro/robot-instagram-web-scrapping.git",
   "author": "João Eliandro <eliandrogermano@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "puppeteer": "^5.3.1"
+  }
 }
