@@ -1,11 +1,17 @@
 {
   "name": "robot-instagram-web-scrapping",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "repository": "https://github.com/joaoeliandro/robot-instagram-web-scrapping.git",
   "author": "João Eliandro <eliandrogermano@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "node src/server.js"
+  },
   "dependencies": {
-    "puppeteer": "^5.3.1"
+    "cloudmersive-nlp-api-client": "^2.1.1",
+    "express": "^4.17.1",
+    "puppeteer": "^5.3.1",
+    "readline-sync": "^1.4.10"
   }
 }
