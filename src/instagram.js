@@ -50,16 +50,17 @@ const instagram = {
   },
 
   unfollow: async (response) => {
-    let followingLink = await instagram.page.$x('//*[text()[contains(., "seguindo")]]');
-
-    // console.log(`Você segue ${} pessoas!`);
-
-    if (response === /[Nn]/g) {
+    if (/[Nn]/.test(response)) {
       console.clear();
       console.log('Finalizando o processo...');
       await instagram.page.waitForTimeout(5000);
+      
       await instagram.browser.close();
     }
+
+    let followingLink = await instagram.page.$x('//*[text()[contains(., "seguindo")]]');
+
+    // console.log(`Você segue ${} pessoas!`);
 
     await followingLink[0].click();
 
