@@ -34,5 +34,7 @@ function detectLanguage(textToDetect) {
 
   await ig.login(username, password);
 
-  await ig.unfollow(readlineSync.question("Quer iniciar o processo? (s/n) "));
+  const unfollowProcess = readlineSync.question("Quer iniciar o processo? (s/n) ");
+
+  await ig.unfollow(unfollowProcess);
 })();
