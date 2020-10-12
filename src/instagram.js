@@ -1,5 +1,4 @@
 const puppeteer = require('puppeteer');
-const path = require('path');
 
 const BASE_URL = 'https://www.instagram.com/';
 
@@ -13,7 +12,6 @@ const instagram = {
     instagram.page = await instagram.browser.newPage();
 
     console.clear();
-    // await page.screenshot({ path: path.resolve(__dirname, '..', '..', 'dist', 'example.png') });
   },
 
   login: async (username, password) => {
@@ -39,7 +37,7 @@ const instagram = {
     await buttonPopup[0].click();
     console.log('Logado!');
     console.log('Entrando no perfil...');
-    await instagram.page.waitForTimeout(8000);
+    await instagram.page.waitForTimeout(5000);
 
     let profileButton = await instagram.page.$('div > span._2dbep.qNELH');
     await profileButton.click();
@@ -54,23 +52,33 @@ const instagram = {
       console.clear();
       console.log('Finalizando o processo...');
       await instagram.page.waitForTimeout(5000);
-      
+
       await instagram.browser.close();
     }
 
     let followingLink = await instagram.page.$x('//*[text()[contains(., "seguindo")]]');
 
-    // console.log(`Você segue ${} pessoas!`);
+    let followingCount = await (async () => {
+      const followingCount = await followingLink[0].$eval('.g47SY',
+        element => element.innerText);
+      return followingCount;
+    })();
+
+    console.log(`Você segue ${followingCount} pessoas!`);
 
     await followingLink[0].click();
 
-    await instagram.page.waitForTimeout(2000);
+    await instagram.page.waitForTimeout(1000);
 
     await instagram._autoScroll();
 
-    await instagram.page.waitForTimeout(2000);
+    await instagram.page.waitForTimeout(1000);
 
-    await instagram._autoScroll();
+    let following = await instagram.page.$$(".wo9IH");
+
+    // await instagram.page.waitForTimeout(2000);
+
+    // await instagram._autoScroll();
   },
 
   _autoScroll: async () => {
@@ -80,7 +88,7 @@ const instagram = {
 
       pageFollowing.scrollTo(0, scrollContainer);
     });
-  }
+  },
 }
 
 module.exports = instagram;
